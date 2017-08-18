@@ -24,20 +24,28 @@ body {
 }
 #secondString {
     transform-origin: 50% 80%;
+    -moz-transform-origin: 400px 400px;
     transform: rotate(0deg);
     transition: 0.2s all cubic-bezier(.45, 1.47, .75, 1.47);
     
 }
 #hourString {
     transform-origin: 50% 80%;
+    -moz-transform-origin: 400px 400px;
 }
 #minuteString {
-    transform-origin: 50% 80%;
-}
-#z10,#z18,#z6 {
-    transition: 0.2s all cubic-bezier(.45, 1.47, .75, 1.47);
-    transform-origin: 50% 50%;
     
+    transform-origin: 50% 80%;
+    -moz-transform-origin: 400px 400px;
+}
+#z10,#z18 {
+    transform-origin: 50% 50%;
+    transition: 0.2s all cubic-bezier(.45, 1.47, .75, 1.47);
+    
+}
+#z6 {
+    transform-origin: 50% 50%;
+    -moz-transform-origin: 270px 400px;
 }
 #z18 {
     fill:#484848;
