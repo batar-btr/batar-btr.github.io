@@ -3,8 +3,12 @@
     margin: 0;
 }
 body {
-    position: relative;
-    background-color:black;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
     
 }
 #www .st0 {
@@ -12,14 +16,7 @@ body {
 }
 .wrap {
     
-   width: 40%;
-   
-   position: absolute;
-   margin: auto;
-    
-    top: 100px;
-    left: 0;
-    right: 0;
+   width: 90vh;
 
 }
 #secondString {
