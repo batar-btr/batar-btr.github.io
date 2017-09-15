@@ -47,74 +47,279 @@ table {
   font-family: 'Roboto-Thin';
   src: url("../fonts/Roboto-Thin.ttf"); }
 
+@font-face {
+  font-family: 'Roboto-Bold';
+  src: url("../fonts/Roboto-Bold.ttf"); }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../fonts/Roboto-Regular.ttf"); }
+
 /* Coolors Exported Palette - coolors.co/f4d06f-ff8811-9dd9d2-fff8f0-392f5a */
 /* HSL */
 /* RGB */
+@-webkit-keyframes drawline {
+  to {
+    stroke-dashoffset: 0; } }
+@keyframes drawline {
+  to {
+    stroke-dashoffset: 0; } }
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0); }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+@keyframes rotate {
+  from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0); }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+@-webkit-keyframes fadeOut {
+  to {
+    opacity: 0;
+    display: none; } }
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    display: none; } }
+
+@-webkit-keyframes svgMove {
+  to {
+    left: 900px;
+    top: 0;
+    width: 300px; } }
+
+@keyframes svgMove {
+  to {
+    left: 900px;
+    top: 0;
+    width: 300px; } }
+
+.svgwrap {
+  width: 300px;
+  position: absolute;
+  right: 1px;
+  top: -13px;
+  z-index: 5; }
+  .svgwrap svg {
+    vertical-align: top; }
+    @media screen and (max-width: 800px) {
+      .svgwrap svg path, .svgwrap svg polygon {
+        fill: #585858;
+        stroke: none; } }
+  .svgwrap #js {
+    -webkit-transform-origin: 50% 50%;
+        -ms-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    -moz-transform-origin: 400px 200px; }
+  .svgwrap #html {
+    -webkit-transform-origin: 50% 50%;
+        -ms-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    -moz-transform-origin: 130.209px 200px; }
+  .svgwrap #css {
+    -webkit-transform-origin: 50% 50%;
+        -ms-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    -moz-transform-origin: 670px 200px; }
+  .svgwrap #js, .svgwrap #css, .svgwrap #html {
+    stroke-dashoffset: -1578;
+    stroke-dasharray: 1578;
+    -webkit-animation: drawline 2s linear forwards;
+            animation: drawline 2s linear forwards; }
+
 body {
-  background-color: #392f5a;
-  color: white; }
+  background-color: gray; }
+
+a {
+  text-decoration: none;
+  color: black; }
 
 header {
-  text-align: center;
-  background-color: #392f5a;
-  position: relative;
-  max-width: 1400px;
+  font-family: 'Roboto-Thin';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: left;
+  -webkit-transition: all 1s linear;
+  -o-transition: all 1s linear;
+  transition: all 1s linear;
+  overflow: hidden;
+  z-index: 5; }
+  header .header-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-bottom: 5px solid #585858;
+    position: relative;
+    padding: 0 100px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    background-image: -webkit-linear-gradient(right, rgba(1, 1, 1, 0), rgba(1, 1, 1, 0) 10px, white 10px, white 100%);
+    background-image: -o-linear-gradient(right, rgba(1, 1, 1, 0), rgba(1, 1, 1, 0) 10px, white 10px, white 100%);
+    background-image: linear-gradient(to left, rgba(1, 1, 1, 0), rgba(1, 1, 1, 0) 10px, white 10px, white 100%);
+    z-index: 10; }
+    @media screen and (max-width: 800px) {
+      header .header-wrap {
+        padding: 0 10px;
+        background-image: -webkit-linear-gradient(top, rgba(1, 1, 1, 0.7), rgba(1, 1, 1, 0.5)), -webkit-linear-gradient(right, rgba(1, 1, 1, 0), rgba(1, 1, 1, 0) 10px, white 10px, white 100%);
+        background-image: -o-linear-gradient(top, rgba(1, 1, 1, 0.7), rgba(1, 1, 1, 0.5)), -o-linear-gradient(right, rgba(1, 1, 1, 0), rgba(1, 1, 1, 0) 10px, white 10px, white 100%);
+        background-image: linear-gradient(to bottom, rgba(1, 1, 1, 0.7), rgba(1, 1, 1, 0.5)), linear-gradient(to left, rgba(1, 1, 1, 0), rgba(1, 1, 1, 0) 10px, white 10px, white 100%);
+        color: white; } }
+    header .header-wrap img {
+      position: absolute;
+      margin: 10px 0;
+      -webkit-border-radius: 50% 50%;
+              border-radius: 50% 50%;
+      z-index: 10; }
+      @media screen and (max-width: 720px) {
+        header .header-wrap img {
+          margin-right: 10px; } }
+    header .header-wrap h1 {
+      font: 40px/80px 'Roboto-Thin';
+      -webkit-transition: all 1s linear;
+      -o-transition: all 1s linear;
+      transition: all 1s linear;
+      padding-left: 22%;
+      position: relative;
+      z-index: 10; }
+
+@media screen and (max-width: 580px) {
+  header .header-wrap h1 {
+    padding-left: 110px; } }
+
+@media screen and (max-width: 390px) {
+  header .header-wrap h1 {
+    font-size: 28px;
+    padding-left: 110px; } }
+
+@media screen and (max-width: 310px) {
+  header .header-wrap h1 {
+    padding-top: 10px;
+    font-size: 20px;
+    line-height: 30px; } }
+    header .header-wrap p {
+      line-height: 20px;
+      padding-bottom: 20px;
+      padding-left: 22%;
+      position: relative;
+      z-index: 10; }
+      @media screen and (max-width: 580px) {
+        header .header-wrap p {
+          padding-left: 110px; } }
+
+.st0 {
+  fill: none;
+  stroke: #000000;
+  stroke-miterlimit: 10; }
+
+.content {
+  max-width: 1200px;
+  -webkit-box-shadow: -3px 0 3px gray;
+          box-shadow: -3px 0 3px gray;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0 100px;
+  background: url("../img/sidebg-shadow.svg") right top repeat-y, -webkit-gradient(linear, left top, left bottom, from(white), to(white));
+  background: url("../img/sidebg-shadow.svg") right top repeat-y, -webkit-linear-gradient(white, white);
+  background: url("../img/sidebg-shadow.svg") right top repeat-y, -o-linear-gradient(white, white);
+  background: url("../img/sidebg-shadow.svg") right top repeat-y, linear-gradient(white, white);
+  -webkit-background-size: 10px 25px;
+          background-size: 10px 25px;
   margin: 0 auto;
-  padding: 10px;
-  font: 60px/60px "Roboto-Thin", sans-serif; }
-  header p {
-    font-size: 30px;
-    line-height: 40px; }
-  header .icon-bar {
-    background: url("../img/git.svg") no-repeat center top;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none; }
+  -webkit-transition: all 1s linear;
+  -o-transition: all 1s linear;
+  transition: all 1s linear;
+  padding-top: 121px;
+  z-index: 1; }
   @media screen and (max-width: 800px) {
-    header {
-      text-align: left; } }
+    .content {
+      padding: 121px 20px 0 10px; } }
+  .content section {
+    padding: 40px 0;
+    font-family: 'Roboto-Thin'; }
+    .content section p {
+      font-size: 20px;
+      padding-left: 22%;
+      line-height: 1.5; }
+      .content section p span {
+        font-family: 'Roboto'; }
+    .content section .title {
+      position: relative;
+      height: 60px; }
+      .content section .title h2 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 50px;
+        line-height: 60px;
+        text-transform: uppercase;
+        color: #F8F7F6;
+        letter-spacing: -0.1em;
+        -webkit-user-select: none;
+           -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none;
+        -webkit-transition: all 0.2s linear;
+        -o-transition: all 0.2s linear;
+        transition: all 0.2s linear; }
+        @media print {
+          .content section .title h2 {
+            display: none; } }
+      .content section .title h3 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding-right: 10px;
+        font-size: 30px;
+        line-height: 60px;
+        text-transform: uppercase;
+        color: black;
+        letter-spacing: -0.1em; }
+  .content .skills ul {
+    width: 78%;
+    padding-left: 22%; }
+    @media screen and (max-width: 600px) {
+      .content .skills ul {
+        width: 100%;
+        padding-left: 0; } }
+    .content .skills ul li {
+      -webkit-transition: all 1s linear;
+      -o-transition: all 1s linear;
+      transition: all 1s linear;
+      margin: 20px 0;
+      padding: 10px;
+      background-image: -webkit-gradient(linear, left top, right top, from(#306092), to(#0ba2a0)), -webkit-gradient(linear, left top, right top, from(#bdece8), to(#bdece8));
+      background-image: -webkit-linear-gradient(left, #306092, #0ba2a0), -webkit-linear-gradient(left, #bdece8, #bdece8);
+      background-image: -o-linear-gradient(left, #306092, #0ba2a0), -o-linear-gradient(left, #bdece8, #bdece8);
+      background-image: linear-gradient(to right, #306092, #0ba2a0), linear-gradient(to right, #bdece8, #bdece8);
+      background-repeat: no-repeat;
+      -webkit-background-size: 10% 100%, 100% 100%;
+              background-size: 10% 100%, 100% 100%;
+      color: white;
+      font-size: 30px; }
+  .content .hobbys .hobbys-icon {
+    padding-left: 22%; }
+    .content .hobbys .hobbys-icon ul {
+      font-size: 0; }
+    .content .hobbys .hobbys-icon li {
+      width: 25%;
+      display: inline-block;
+      text-align: left; }
+  .content .hobbys img {
+    width: 100px; }
 
-section {
-  max-width: 1400px;
-  margin: 0 auto; }
-
-.items {
-  display: grid;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-align-content: center;
-      -ms-flex-line-pack: center;
-          align-content: center;
-  grid-template-columns: repeat(auto-fill, 300px);
-  grid-auto-rows: 300px;
-  grid-gap: 10px; }
-  .items .item {
-    background: url("../img/ROTOR.svg"), -webkit-gradient(linear, left top, left bottom, from(gray), to(gray));
-    background: url("../img/ROTOR.svg"), -webkit-linear-gradient(gray, gray);
-    background: url("../img/ROTOR.svg"), -o-linear-gradient(gray, gray);
-    background: url("../img/ROTOR.svg"), linear-gradient(gray, gray);
-    -webkit-background-size: 100% auto;
-            background-size: 100% auto; }
-    .items .item img {
-      max-width: 100%; }
-  @media screen and (max-width: 940px) {
-    .items {
-      grid-template-columns: repeat(auto-fill, 250px);
-      grid-auto-rows: 250px;
-      grid-gap: 10px; } }
-  @media screen and (max-width: 800px) {
-    .items {
-      width: 100vw;
-      background-color: black;
-      grid-gap: 0.5vw;
-      grid-template-columns: repeat(3, 33vw);
-      grid-auto-rows: 33vw; } }
+@media screen and (max-width: 800px) {
+  .content .hobbys img {
+    width: 80%; } }
+    @media print {
+      .content .hobbys img {
+        width: 50%; } }

@@ -1,15 +1,33 @@
-console.log('HELLO WORLD');
 
-var colors = ["rgba(244, 208, 111, 1)", "rgba(255, 136, 17, 1)", "rgba(157, 217, 210, 1)", "rgba(93, 211, 158, 1)"];
+(function () {
+    'use strict';
 
-var blocks = document.querySelectorAll('.item');
-console.log(blocks);
+    $(document).ready(function(){
 
-function randomNumber (n) {
-    return Math.floor(Math.random() * n);
-}
+        $('.skills li').each(activeSkills);
 
-blocks.forEach(function(item) {
-    var random = randomNumber(4);
-    item.style.background = "url('../img/ROTOR.svg'), linear-gradient("+ colors[random] + "," + colors[random] + ")";
-});
+        $(document).on('scroll', function(){
+            $('.skills li').each(activeSkills);
+        });
+
+        $(document).on('scroll', rotateGear);
+    });
+
+    function rotateGear () {
+        var currentScroll = $(document).scrollTop();
+        $('#js').css({'transform': "rotate("+ currentScroll*1.44*0.5555555555555 +"deg)"});
+        $('#css').css({'transform': "rotate("+ -currentScroll*1.44 +"deg)"});
+        $('#html').css({'transform': "rotate("+ -currentScroll*1.44 +"deg)"});
+    }
+
+    function activeSkills() {
+        var elem = $(this);
+    
+        if( elem.offset().top < $(window).height() + $(document).scrollTop() && elem.offset().top > $(document).scrollTop()) {
+            elem.css({'backgroundSize': elem.data('skillsValue')+'% ' + '100%, 100% 100%'});
+        } else {
+            elem.css({'backgroundSize': '1% 100%, 100% 100%'});
+        }
+    }
+
+}());

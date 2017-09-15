@@ -1,0 +1,35 @@
+* {
+  color: black !important; }
+
+P {
+  font-size: 12pt !important;
+  padding-left: 100px !important; }
+
+h1 {
+  font: 60px Arial, sans-serif;
+  padding-left: 0 !important; }
+
+.content {
+  padding: 121px 20px 0; }
+
+.header-wrap {
+  padding: 0 20px !important; }
+  .header-wrap img {
+    display: none; }
+
+section {
+  padding: 10px 0 !important; }
+
+.title h2, h3 {
+  letter-spacing: normal !important; }
+
+.skills li {
+  margin: 0 !important;
+  display: inline-block !important; }
+
+.skills ul {
+  padding-left: 100px !important; }
+
+svg path, polygon {
+  fill: gray !important;
+  stroke: none !important; }
