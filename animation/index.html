@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/jquery.fullPage.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/libs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
+</head>
+
+<body>
+    <ul id="menu">
+        <li data-menuanchor="firstPage"><a href="#firstPage">First Section</a></li>
+        <li data-menuanchor="secondPage"><a href="#secondPage">Second Section</a></li>
+        <li data-menuanchor="3rdPage"><a href="#3rdPage">Third Section</a></li>
+        <li data-menuanchor="4thPage"><a href="#4thPage">Fourth Section</a></li>
+    </ul>    
+    <div id="fullpage">
+        <div class="section">
+            <div class="first-section">
+                <ul>
+                    <li>w</li>
+                    <li>e</li>
+                    <li>l</li>
+                    <li>l</li>
+                    <li>c</li>
+                    <li>o</li>
+                    <li>m</li>
+                    <li>e</li>
+                </ul>
+                <div class="btn-grp">
+                    <div class="play">
+                        <div class="rotate">
+                            <div class="second-st">
+                                    <i class="fa fa-play" aria-hidden="true"></i>
+                            </div>
+                            <div class="first-st">
+                                    <i class="fa fa-pause" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="refresh">
+                            <i class="fa fa-repeat" aria-hidden="true"></i>
+                    </div>
+                    <div class="fullScreen">
+                        <div class="rotate">
+                            <div class="second-st">
+                                    <i class="fa fa-compress" aria-hidden="true"></i>
+                            </div>
+                            <div class="first-st">
+                                    <i class="fa fa-expand" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="second-section">
+                <div class="wrapr">
+                    <h1 class="title">lettering animation</h1>
+                    <button>restart</button>
+                </div>
+            </div>
+        </div>
+        <div class="section third-section">
+            <div class="wrapr">
+                <div class="number first-hour">
+                    <div class="rotate">
+                        <div class="invis">A</div>
+                        <div class="vis">B</div>
+                    </div>
+                </div>
+                <div class="number second-hour">
+                    <div class="rotate">
+                        <div class="invis">A</div>
+                        <div class="vis">B</div>
+                    </div>
+                </div>
+                <div class="number first-minute">
+                    <div class="rotate">
+                        <div class="invis">A</div>
+                        <div class="vis">B</div>
+                    </div>
+                </div>
+                <div class="number second-minute">
+                    <div class="rotate">
+                        <div class="invis">A</div>
+                        <div class="vis">B</div>
+                    </div>
+                </div>
+                <div class="number first-second">
+                    <div class="rotate">
+                        <div class="invis">A</div>
+                        <div class="vis">B</div>
+                    </div>
+                </div>
+                <div class="number second-second">
+                    <div class="rotate">
+                        <div class="invis">A</div>
+                        <div class="vis">B</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <canvas id="particles"></canvas>
+        </div>
+    </div>
+    <script src="js/lettering.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/mycanvas.js"></script>
+</body>
+
+</html>

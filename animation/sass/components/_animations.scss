@@ -1,0 +1,36 @@
+@keyframes first {
+    from {
+        transform: translateY(-55vh);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes rotate {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotateY(0);
+    }
+    40% {
+        transform: rotateY(180deg);
+    }
+    50% {
+        transform: rotateY(180deg);
+    }
+    90% {
+        transform: rotateY(360deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
