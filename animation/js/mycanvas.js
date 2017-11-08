@@ -14,8 +14,8 @@
             particleColor: '#ebebeb',
             defaultRadius: 2,
             addedRadius: 2,
-            particleAmount: 100,
-            communicateRadius: 150,
+            particleAmount: 20,
+            communicateRadius: 400,
             lineWidth: 0.5,
             lineColor: 'rgba(255,255,255,opacity)'
         },
