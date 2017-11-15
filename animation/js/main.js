@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $('#fullpage').fullpage({
-        anchors: ['firstPage', 'secondPage', '3rdPage', '4thPage'],
+        anchors: ['firstPage', 'secondPage', '3rdPage', '4thPage', '5thPage', '6thPage', '7thPage'],
         menu: '#menu',
         sectionsColor: ['#252525', '#2A9D8F', '#E9C46A', '#F4A261']
     });
@@ -102,7 +102,7 @@ $(document).ready(function () {
             if (this.hasOwnProperty(key)) {
                 this[key].firstDigit.index = this[key].firstDigit.item % 2;
                 this[key].secondDigit.index = this[key].secondDigit.item % 2
-                console.log(this[key]);
+                // console.log(this[key]);
             }
         }
 
@@ -192,4 +192,5 @@ $(document).ready(function () {
         }
         $(this).toggleClass('active');
     });
+    
 });

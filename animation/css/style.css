@@ -2513,8 +2513,8 @@ table {
       font-family: 'Roboto-Thin';
       font-size: 10vh;
       text-transform: uppercase;
-      -webkit-animation: first 3s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
-              animation: first 3s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+      -webkit-animation: first 3s forwards cubic-bezier(0.215, 0.61, 0.355, 1);
+              animation: first 3s forwards cubic-bezier(0.215, 0.61, 0.355, 1);
       -webkit-animation-play-state: running;
               animation-play-state: running; }
     .first-section ul.stop li {
