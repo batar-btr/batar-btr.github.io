@@ -33,3 +33,6 @@ section {
 svg path, polygon {
   fill: gray !important;
   stroke: none !important; }
+.works {
+  display: none;
+}
