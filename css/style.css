@@ -121,11 +121,13 @@ table {
             transform-origin: 50% 50%;
     -moz-transform-origin: 400px 200px; }
   .svgwrap #html {
+    transform-box: fill-box;
     -webkit-transform-origin: 50% 50%;
         -ms-transform-origin: 50% 50%;
             transform-origin: 50% 50%;
     -moz-transform-origin: 130.209px 200px; }
   .svgwrap #css {
+    transform-box: fill-box;
     -webkit-transform-origin: 50% 50%;
         -ms-transform-origin: 50% 50%;
             transform-origin: 50% 50%;
