@@ -1,5 +1,29 @@
 (() => {
-
+    //observer object currentState
+    const currentState = {
+        __car: 'mers',
+        __partial: 'стандарт++',
+        __selectedPart: 'стандарт++',
+        subscribers: {
+            any: []
+        },
+        subscribe(fn, ctx, type = 'any') {
+            if (typeof this.subscribers[type] === 'undefined') {
+                this.subscribers[type] = [];
+            }
+            this.subscribers[type].push(fn.bind(ctx));
+        },
+        set partial(value) {
+            this.__partial = value;
+            this.subscribers['any'].forEach(fn => fn(this.__partial, this.__car));
+        },
+        set car(value) {
+            this.__car = value;
+            this.__selectedPart = 'стандарт++';
+            this.partial = 'стандарт++';
+            this.subscribers['changeCar'].forEach(fn => fn());
+        }
+    };
     class Car {
         constructor(name, price) {
             this.name = name;
@@ -29,7 +53,7 @@
             let onLoad = () => {
                 cnt++;
                 if (cnt === this.urls.length) {
-                    console.log(this.partials);
+                    console.log('Done');
                 }
             }
 
@@ -41,52 +65,12 @@
             });
         }
     }
-    let parts = {
-        urls: [
-            "зеркала",
-            "капот-полностью",
-            "крылья-полностью",
-            "передний-бампер",
-            "полка-заднего-бампера",
-            "пороги-внутренние",
-            "противотуманки",
-            "ручки",
-            "торцы-дверей",
-            "фары",
-            "часть-капота",
-            "часть-крыльев"
-        ],
-        images: {},
-        loadImg() {
-            return new Promise((res, rej) => {
-                length = this.urls.length;
-                let cnt = 0;
-                let images = {};
-                function onLoad(){
-                    cnt+=1;
-                    if(cnt === length) {
-                        res(images);
-                    }  
-                }
-                this.urls.forEach(e => {
-                    let img = new Image();
-                    img.onload = onLoad;
-                    img.src = `./img/parts/${e}.svg`;
-                    images[e] = img;
-                });
-            });
-        }
-    };
-    parts.loadImg().then(data => {
-        console.log(data);
-    });
-
 
     let mazdaPrice = [300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300];
     let citPrice = [200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200];
     let mersPrice = [500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500];
 
-    let cars = {
+    let cars = {                              
         mers: new Car('mers', mersPrice),
         cit: new Car('cit', citPrice),
         mazda: new Car('mazda', mazdaPrice)
@@ -99,36 +83,33 @@
     let navBar = {
         elem: document.querySelector('.navbar'),
         cards: document.querySelectorAll('.card'),
-        currentCar: 'mers',
-        mouseover() {
-            this.elem.addEventListener('mouseover', e => {
+        click() {
+            this.elem.addEventListener('click', e => {
                 let target = e.target.closest('.card');
                 if (!target) {
                     return;
                 }
 
-                if (target.dataset.name !== this.currentCar) {
-                    this.currentCar = target.dataset.name;
+                if (target.dataset.name !== currentState.car) {
+                    currentState.car = target.dataset.name;
                     this.cards.forEach(e => e.classList.remove('active'));
                     target.classList.add('active');
-                    viewBar.renderImg('стандарт++', this.currentCar);
-                    sidebar.selectDefault();
                 }
 
             });
         }
     };
-    navBar.mouseover();
+    navBar.click();
 
 
     let viewBar = {
         elem: document.querySelector('.viewbar'),
-        mainWindow: document.querySelector('.mainwindow'),
+        picture: document.querySelector('.picture'),
         renderImg(part, car) {
-            let img = this.mainWindow.children[0];
+            let img = this.picture.children[0];
             let newImg = cars[car].partials[part].img;
             if (img !== newImg) {
-                this.mainWindow.replaceChild(newImg, img);
+                this.picture.replaceChild(newImg, img);
             }
         }
     };
@@ -148,21 +129,39 @@
 
     let customBar = {
         elem: document.querySelector('.custombar'),
-        update(partsArr) {
-            this.elem.innerHTML = partsArr;
+        iconBlocks: document.querySelectorAll('.custombar > div'),
+        plans: {
+            'минимальный': ["пороги-внутренние", "торцы-дверей", "задний-бампер", "зеркала", "фары", "ручки" ],
+            'стандарт': ["часть-капота", "часть-крыльев", "передний-бампер", "зеркала", "фары", "ручки", "противотуманки"],
+            'стандарт+': ["капот-полностью", "часть-крыльев", "передний-бампер", "зеркала", "фары", "ручки", "противотуманки"],
+            'стандарт++': ["капот-полностью", "крылья-полностью", "передний-бампер", "зеркала", "фары", "ручки", "противотуманки"],
+            'стандарт+++': ["капот-полностью", "крылья-полностью", "передний-бампер", "зеркала", "фары", "ручки", "противотуманки", "задний-бампер"]
+        },
+        update(part) {
+            if(this.plans[part]) {
+                this.iconBlocks.forEach(e => {
+                    let name = e.dataset.name;
+                    if(this.plans[part].some(item => item === name)) {
+                        e.style.display = 'block';
+                    } else {
+                        e.style.display = 'none';
+                    }
+                });
+            } else {
+                this.iconBlocks.forEach(e => e.style.display = 'none');
+            }
         }
     }
-    let sidebar = {
+
+    let sideBar = {
         elem: document.querySelector('.sidebar'),
         listItems: [...document.querySelectorAll('.sidebar li')].filter(e => {
             return !e.classList.contains('dropdown');
         }),
-        currentPart: 'стандарт++',
         selectDefault() {
             this.listItems.forEach(e => e.classList.remove('active'));
             let item = this.elem.querySelector('[data-item="стандарт++"]');
             item.classList.add('active');
-            viewBar.renderImg('стандарт++', navBar.currentCar);
         },
         click() {
             this.elem.addEventListener('click', e => {
@@ -170,12 +169,28 @@
                 if (target.dataset.item !== undefined) {
                     this.listItems.forEach(e => e.classList.remove('active'));
                     target.classList.add('active');
-                    viewBar.renderImg(target.dataset.item, navBar.currentCar);
+                    currentState.__selectedPart = target.dataset.item;
                     customBar.update(target.dataset.item);
+                }
+            });
+        },
+        mouseover() {
+            this.elem.addEventListener('mouseover', e => {
+                if (e.target.dataset.item !== undefined) {
+                    currentState.partial = e.target.dataset.item;
+                }
+            });
+            this.elem.addEventListener('mouseout', e => {
+                if (e.target.tagName === 'LI' && e.relatedTarget.tagName !== 'Li') {
+                    viewBar.renderImg(currentState.__selectedPart, currentState.__car);
                 }
             });
         }
     };
-    sidebar.click();
+    sideBar.mouseover();
+    sideBar.click();
+
+    currentState.subscribe(viewBar.renderImg, viewBar);
+    currentState.subscribe(sideBar.selectDefault, sideBar, 'changeCar');
 
 })();
